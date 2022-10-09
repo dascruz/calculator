@@ -5,30 +5,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calculator</title>
-  <link rel="stylesheet" href="calculator.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="calculator.js" defer></script>
 </head>
 <body>
-  <div class="container">
+  <div id="container">
     <div id="calc">
-      <div id="display">4242990</div>
-      <div id="7" class="digit">7</div>
-      <div id="8" class="digit">8</div>
-      <div id="9" class="digit">9</div>
-      <div id="delete" class="clear">DEL</div>
-      <div id="ac" class="clear">AC</div>
-      <div id="4" class="digit">4</div>
-      <div id="5" class="digit">5</div>
-      <div id="6" class="digit">6</div>
-      <div id="multiply" class="operation">×</div>
-      <div id="divide" class="operation">÷</div>
-      <div id="1" class="digit">1</div>
-      <div id="2" class="digit">2</div>
-      <div id="3" class="digit">3</div>
-      <div id="add" class="operation">+</div>
-      <div id="subtract" class="operation">−</div>
-      <div id="0" class="digit">0</div>
-      <div id="decimal">.</div>
-      <div id="equals">=</div>
+      <div id="display">0</div>
+      <button value="7" class="digit">7</button>
+      <button value="8" class="digit">8</button>
+      <button value="9" class="digit">9</button>
+      <button value="delete" class="delete">DEL</button>
+      <button value="clear" class="clear">AC</button>
+      <button value="4" class="digit">4</button>
+      <button value="5" class="digit">5</button>
+      <button value="6" class="digit">6</button>
+      <button value="*" class="operator">×</button>
+      <button value="/" class="operator">÷</button>
+      <button value="1" class="digit">1</button>
+      <button value="2" class="digit">2</button>
+      <button value="3" class="digit">3</button>
+      <button value="+" class="operator">+</button>
+      <button value="-" class="operator">−</button>
+      <button id="zero" value="0" class="digit">0</button>
+      <button value="." class="decimal">.</button>
+      <button value="=" class="equals">=</button>
     </div>
   </div>
 </body>
