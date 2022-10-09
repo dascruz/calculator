@@ -1,6 +1,6 @@
 let displayValue = "0";
-let firstOperand = null;
-let firstOperator = null;
+let lastOperand = null;
+let lastOperator = null;
 const buttons = document.querySelectorAll("button");
 
 function add(x, y) {
@@ -12,11 +12,15 @@ function subtract(x, y) {
 }
 
 function multiply(x, y) {
-  return x * y;
+  return Math.round(x * y * 10000) / 10000;
 }
 
 function divide(x, y) {
-  return x / y;
+  if (y === 0) {
+    alert("Can't divide by 0!");
+    return x;
+  }
+  return Math.round(x / y * 10000) / 10000;
 }
 
 function operate(operator, x, y) {
@@ -35,8 +39,10 @@ function operate(operator, x, y) {
 function updateDisplay() {
   const display = document.getElementById('display');
   display.textContent = displayValue;
-  if(displayValue.length > 10) {
-      display.textContent = displayValue.substring(0, 10);
+  if (displayValue.length > 12) {
+      display.style.fontSize = `${72 / displayValue.length}em`;
+  } else {
+    display.style.fontSize = "6em";
   }
 }
 
@@ -68,14 +74,14 @@ for (let i = 0; i < buttons.length; i++) {
 }
 
 function inputDigit(digit) {
-  if (firstOperator == null) {
+  if (lastOperator == null) {
     if (displayValue === "0") {
       displayValue = digit;
     } else {
       displayValue += digit;
     }
-  } else if (firstOperand == null) {
-    firstOperand = displayValue;
+  } else if (lastOperand == null) {
+    lastOperand = displayValue;
     displayValue = digit;
   } else {
     if (displayValue === "0") {
@@ -87,26 +93,27 @@ function inputDigit(digit) {
 }
 
 function inputOperator(operator) {
-  if (firstOperand == null) {
-    firstOperator = operator;
+  if (lastOperand == null) {
+    lastOperator = operator;
   } else {
     equals();
-    firstOperator = operator;
+    lastOperator = operator;
   }
 }
 
 function clear() {
   displayValue = "0";
-  firstOperand = null;
-  firstOperator = null;
+  lastOperand = null;
+  lastOperator = null;
 }
 
 function equals() {
-  if (firstOperator == null) {
+  if (lastOperator == null) {
     return;
   } else {
-    let result = operate(firstOperator, +firstOperand, +displayValue);
-    firstOperand = null;
+    let result = operate(lastOperator, +lastOperand, +displayValue);
+    lastOperand = null;
+    lastOperator = null;
     displayValue = String(result);
   }
 }
