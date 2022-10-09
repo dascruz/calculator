@@ -60,6 +60,11 @@ for (let i = 0; i < buttons.length; i++) {
         updateDisplay();
         break;
 
+      case "delete":
+        deleteDigit();
+        updateDisplay();
+        break;
+
       case "operator":
         inputOperator(button.value);
         updateDisplay();
@@ -67,6 +72,11 @@ for (let i = 0; i < buttons.length; i++) {
 
       case "equals":
         equals();
+        updateDisplay();
+        break;
+      
+      case "decimal":
+        inputDecimal();
         updateDisplay();
         break;
     }
@@ -101,10 +111,25 @@ function inputOperator(operator) {
   }
 }
 
+function inputDecimal() {
+  if (!(displayValue.split("").includes("."))) {
+    displayValue += ".";
+  }
+}
+
 function clear() {
   displayValue = "0";
   lastOperand = null;
   lastOperator = null;
+}
+
+function deleteDigit() {
+  if (!(displayValue === "0")) {
+    displayValue = displayValue.substring(0, displayValue.length - 1);
+    if (displayValue === "") {
+      displayValue = "0";
+    }
+  }
 }
 
 function equals() {
